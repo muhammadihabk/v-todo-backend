@@ -10,6 +10,17 @@ async function create(todo: ICreateTodo) {
   }
 }
 
+async function findAllByUserId(options: any) {
+  const { userId, limit, skip } = options;
+  return await todoModel.find({ userId }).limit(limit).skip(skip);
+}
+
+async function countByUserId(userId: string) {
+  return await todoModel.countDocuments({ userId });
+}
+
 export default {
   create,
+  findAllByUserId,
+  countByUserId,
 };
