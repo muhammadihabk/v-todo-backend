@@ -59,4 +59,8 @@ authController.post('/signin', async (req, res) => {
     });
 });
 
+authController.post('/logout', (_, res) => {
+  res.clearCookie('authToken').sendStatus(200);
+});
+
 export default authController;
