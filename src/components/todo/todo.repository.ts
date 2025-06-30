@@ -1,5 +1,5 @@
 import todoModel from './todo.model';
-import { ICreateTodo } from './todo.types';
+import { ICreateTodo, IDeleteTodo, IUpdateTodo } from './todo.types';
 import { handleDBErrors } from '../../common/errors';
 
 async function create(todo: ICreateTodo) {
@@ -19,8 +19,21 @@ async function countByUserId(userId: string) {
   return await todoModel.countDocuments({ userId });
 }
 
+async function updateTodoById(options: IUpdateTodo) {
+  const { _id, userId } = options;
+  return await todoModel.findOneAndUpdate({ _id, userId }, options, {
+    new: true,
+  });
+}
+
+async function deleteTodoById(options: IDeleteTodo) {
+  return await todoModel.findOneAndDelete(options);
+}
+
 export default {
   create,
   findAllByUserId,
   countByUserId,
+  updateTodoById,
+  deleteTodoById,
 };

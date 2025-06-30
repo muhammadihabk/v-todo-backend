@@ -49,4 +49,44 @@ todoController.post('/find', async (req: any, res) => {
   }
 });
 
+todoController.patch('/', async (req: any, res) => {
+  try {
+    const options = {
+      ...req.body,
+      userId: req.user!._id,
+    };
+    const updated = await todoService.updateTodoById(options);
+
+    if (!updated) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.json(updated);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+todoController.delete('/:id', async (req: any, res) => {
+  try {
+    const options = {
+      _id: req.params.id,
+      userId: req.user!._id,
+    };
+    const deleted = await todoService.deleteTodoById(options);
+
+    if (!deleted) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.json(deleted);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 export default todoController;

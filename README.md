@@ -57,5 +57,5 @@
 | ------------------ | ---------------- |
 | Add new todo       | POST /todo       |
 | Get all user todos | POST /todo/find  |
-| Update todo        | UPDATE /todo/:id |
+| Update todo        | PATCH /todo/:id |
 | Delete todo by id  | DELETE /todo/:id |

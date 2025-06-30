@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 export interface IDBTodo {
   _id: string;
@@ -13,4 +13,17 @@ export interface IDBTodo {
 export interface ICreateTodo {
   title: string;
   description: string;
+}
+
+export interface IUpdateTodo {
+  _id: string;
+  title?: string;
+  description?: string;
+  completed?: boolean;
+  userId: string;
+}
+
+export interface IDeleteTodo {
+  _id: string;
+  userId: string;
 }
