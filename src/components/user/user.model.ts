@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { IDBUser } from './user.types';
 
-const collection = 'user';
+const userCollectionName = 'user';
 const schema = new mongoose.Schema<IDBUser>(
   {
     name: { type: String, required: true },
@@ -16,10 +16,11 @@ const schema = new mongoose.Schema<IDBUser>(
   },
   {
     timestamps: true,
-    collection,
+    collection: userCollectionName,
   }
 );
 
-const userModel = mongoose.model(collection, schema);
+const userModel = mongoose.model(userCollectionName, schema);
 
 export default userModel;
+export { userCollectionName };

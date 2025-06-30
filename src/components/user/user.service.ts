@@ -1,6 +1,6 @@
 import { generatePassword } from '../../config/auth/password';
 import UserRepository from './user.repository';
-import { ICreateUser, IDBUser, IFindUserFilter } from './user.types';
+import { ICreateUser, IDBUser, IFindUserFilter, IUser } from './user.types';
 
 async function create(inUser: ICreateUser) {
   try {
@@ -13,7 +13,7 @@ async function create(inUser: ICreateUser) {
   }
 }
 
-async function findOne(filter: IFindUserFilter): Promise<any | null> {
+async function findOne(filter: IFindUserFilter): Promise<IUser | null> {
   const result = await UserRepository.findOne(filter);
   if (!result) {
     return null;

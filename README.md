@@ -18,8 +18,7 @@
   name: string,
   email: string,
   salt: string,
-  hash: string,
-  todos: todoReference[]
+  hash: string
 }
 ```
 
@@ -27,8 +26,10 @@
 
 ```json
 {
-  name: string,
+  title: string,
   description: string,
+  completed: boolean,
+  userId: reference,
   createdAt: string,
   updatedAt: string
 }
