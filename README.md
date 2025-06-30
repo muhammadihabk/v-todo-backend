@@ -45,17 +45,11 @@
 | Sign in | POST /auth/signin |
 | Logout  | POST /auth/logout |
 
-## User
-
-| Action         | Route     |
-| -------------- | --------- |
-| Get user by id | /user/:id |
-
 ## Todo
 
 | Action             | Route            |
 | ------------------ | ---------------- |
 | Add new todo       | POST /todo       |
 | Get all user todos | POST /todo/find  |
-| Update todo        | PATCH /todo/:id |
+| Update todo        | PATCH /todo/:id  |
 | Delete todo by id  | DELETE /todo/:id |

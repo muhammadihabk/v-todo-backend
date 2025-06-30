@@ -4,7 +4,7 @@ import { handleDBErrors } from '../../common/errors';
 
 async function create(user: IDBUser) {
   try {
-    return await userModel.create(user);
+    return (await userModel.create(user)).toObject();
   } catch (error: any) {
     handleDBErrors(error, 'User');
   }

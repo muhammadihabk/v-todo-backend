@@ -11,8 +11,13 @@ authController.post('/signup', async (req, res) => {
   try {
     const user: ICreateUser = req.body;
     const createdUser = await UserService.create(user);
+    if (!createdUser) {
+      res.sendStatus(500);
+      return;
+    }
 
     const token = issueJWT(createdUser!._id);
+    const formatedUserObject = UserService.formatUserObject(createdUser);
 
     res
       .status(201)
@@ -21,9 +26,7 @@ authController.post('/signup', async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         maxAge: Number(process.env.JWT_EXPIRATION),
       })
-      .json({
-        id: createdUser!._id,
-      });
+      .json(formatedUserObject);
   } catch (error) {
     if (error instanceof DuplicateKeyError) {
       res.sendStatus(409);
@@ -48,15 +51,14 @@ authController.post('/signin', async (req, res) => {
   }
 
   const token = issueJWT(user._id);
+  const formatedUserObject = UserService.formatUserObject(user);
 
   res
     .cookie('authToken', token, {
       httpOnly: true,
       maxAge: Number(process.env.JWT_EXPIRATION),
     })
-    .json({
-      id: user._id,
-    });
+    .json(formatedUserObject);
 });
 
 authController.post('/logout', (_, res) => {

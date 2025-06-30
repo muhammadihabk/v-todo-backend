@@ -18,17 +18,22 @@ async function findOne(filter: IFindUserFilter): Promise<IUser | null> {
   if (!result) {
     return null;
   }
-  const { salt, hash, _id, ...user } = result;
 
-  return { ...user, _id: _id.toString() };
+  return formatUserObject(result);
 }
 
 async function authFindOne(filter: IFindUserFilter): Promise<IDBUser | null> {
   return await UserRepository.findOne(filter);
 }
 
+function formatUserObject(user: IDBUser) {
+  const { salt, hash, _id, ...userObject } = user;
+  return { ...userObject, _id: _id.toString() };
+}
+
 export default {
   create,
   findOne,
   authFindOne,
+  formatUserObject,
 };
