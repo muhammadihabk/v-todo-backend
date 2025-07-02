@@ -26,7 +26,9 @@ authController.post('/signup', async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
         maxAge: Number(process.env.JWT_EXPIRATION),
       })
-      .json(formatedUserObject);
+      .json({
+        user: formatedUserObject,
+      });
   } catch (error) {
     if (error instanceof DuplicateKeyError) {
       res.sendStatus(409);
@@ -58,7 +60,9 @@ authController.post('/signin', async (req, res) => {
       httpOnly: true,
       maxAge: Number(process.env.JWT_EXPIRATION),
     })
-    .json(formatedUserObject);
+    .json({
+      user: formatedUserObject,
+    });
 });
 
 authController.post('/logout', (_, res) => {

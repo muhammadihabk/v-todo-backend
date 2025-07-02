@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import authController from './components/auth/auth.controller';
 import passport from 'passport';
 import { handlePassportErrors } from './config/auth/passport';
@@ -7,6 +8,12 @@ import todoController from './components/todo/todo.controller';
 
 const app = express();
 
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser);
 app.use('/auth', authController);
