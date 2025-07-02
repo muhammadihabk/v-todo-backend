@@ -4,11 +4,12 @@
   "description": "Todo App",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npx rimraf dist/ && npx tsc --watch & npx nodemon ."
+    "dev": "npx rimraf dist/ && concurrently 'npx tsc --watch'  'npx nodemon .'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^9.2.0",
     "cookie": "^1.0.2",
     "dotenv": "^17.0.0",
     "express": "^5.1.0",
