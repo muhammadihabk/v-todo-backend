@@ -1,0 +1,15 @@
+# backend
+NODE_ENV=development
+
+# database
+MONGO_INITDB_ROOT_USERNAME=usr
+MONGO_INITDB_ROOT_PASSWORD=pas
+MONGO_INITDB_DATABASE=vTodos
+MONGO_HOST=mongodb
+MONGO_PORT=27017
+
+# security
+JWT_SECRET=devsecret
+PASSPORT_SECRET=devsecret
+CLIENT_URL=http://localhost:9000
+JWT_EXPIRATION=86400000

@@ -1,3 +1,22 @@
+# v-todos
+
+![todos list](./about/todos-list.png)
+
+# Usage
+
+## Run the backend
+
+1. Copy content of [example](./example) to `./env`
+2. Run `docker compose up -d`
+
+## Run the frontend
+
+[Frontend repo](https://github.com/muhammadihabk/v-todo-frontend)
+
+1. Copy content of [example](./example) to `./env`
+2. Run `npm run dev`.
+3. Navigate in browser to `http://localhost:9000`
+
 # Requirements
 
 - Auth
@@ -5,11 +24,19 @@
 - Todos: User can
   - Create a todo.
   - View todos.
-  - Update description.
-  - Mark as completed.
-  - Delete a todo.
+  - Update description (Not implemented).
+  - Mark as completed (Not implemented).
+  - Delete a todo (Not implemented).
 
-# Database Design
+# Tech Specs
+
+## Frontend
+
+![Front-end Plan](./about/front-end-plan.png)
+
+## Backend
+
+### Database Design
 
 **User**
 
@@ -35,9 +62,9 @@
 }
 ```
 
-# API Design
+### API Design
 
-## Auth
+**Auth**
 
 | Action  | Route             |
 | ------- | ----------------- |
@@ -45,7 +72,7 @@
 | Sign in | POST /auth/signin |
 | Logout  | POST /auth/logout |
 
-## Todo
+**Todo**
 
 | Action             | Route            |
 | ------------------ | ---------------- |
